@@ -1,6 +1,8 @@
 import { ShoppingCartIcon } from "@heroicons/react/24/solid";
+import { useCart } from "../context/CartContext";
 
 export function Header({ count, setPage }) {
+  const { cartItems } = useCart();
   return (
     <header className="bg-gray-900 text-white p-4 flex justify-between items-center">
       <h1 className="text-4xl font-extrabold tracking-wide">
@@ -20,8 +22,8 @@ export function Header({ count, setPage }) {
         onClick={() => setPage("Cart")}
       >
         <ShoppingCartIcon className="h-6 w-6 text-white" />
-
-        <span className="text">{count}</span>
+        
+        <span className="text">{cartItems.length}</span>
       </button>
     </header>
   );
